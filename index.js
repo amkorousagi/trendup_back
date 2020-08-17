@@ -100,7 +100,7 @@ app.get('/edge',(req,res) => {
 });
 
 app.get('/future',(rep, res) => {
-    const SELECT_ALL_KEYWORD_FUTURE = 'select * from MLpredict_list_male;'
+    const SELECT_ALL_KEYWORD_FUTURE = 'select * from MLpredict_male;'
     
     connection.query(SELECT_ALL_KEYWORD_FUTURE, (err, results) => {
 
