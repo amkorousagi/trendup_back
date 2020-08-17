@@ -105,7 +105,7 @@ app.get('/future',(rep, res) => {
     connection.query(SELECT_ALL_KEYWORD_FUTURE, (err, results) => {
 
         results.sort(function(a, b) { // 오름차순
-            return a.accuracy < b.accuracy ? -1 : a.accuracy > b.accuracy ? 1 : 0;
+            return a.accuracy > b.accuracy ? -1 : a.accuracy < b.accuracy ? 1 : 0;
             // 1, 2, 3, 4, 10, 11
         });
 
