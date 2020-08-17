@@ -10,7 +10,7 @@ RUN npm install nodemon -g
 # download code
 RUN mkdir example
 WORKDIR /example
-RUN git clone https://github.com/amkorousagi/trendup_front.git
+RUN git clone https://github.com/amkorousagi/trendup_back.git
 
 # environment
 EXPOSE 6001
