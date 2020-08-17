@@ -6,8 +6,8 @@ const app = express();
 
 const HOST_NAME = "0.0.0.0"
 const PORT = 6001
-
-const SELECT_ALL_PRODUCTS_QUERY = 'select * from keyword_live_male;';
+const SELECT_ALL_KEYWORD_FEMALE_QUERY = 'select * from keyword_live_female;';
+const SELECT_ALL_KEYWORD_MALE_QUERY = 'select * from keyword_live_male;';
 const SELECT_ALL_MAP_NODE_QUERY = 'select * from youtube_map_node';
 const SELECT_ALL_MAP_EDGE_QUERY = 'select * from youtube_map_edge';
 
@@ -246,8 +246,21 @@ app.get('/mlpredict',(req,res) => {
     })
 });
 
-app.get('/products', (req,res) => {
-    connection.query(SELECT_ALL_PRODUCTS_QUERY, (err, results) => {
+app.get('/products_male', (req,res) => {
+    connection.query(SELECT_ALL_KEYWORD_MALE_QUERY, (err, results) => {
+        if(err){
+            return res.send(err)
+        }
+        else {
+            return res.json({
+                data: results
+            })
+        }
+    });
+    //console.log(res)
+});
+app.get('/products_female', (req,res) => {
+    connection.query(SELECT_ALL_KEYWORD_FEMALE_QUERY, (err, results) => {
         if(err){
             return res.send(err)
         }
