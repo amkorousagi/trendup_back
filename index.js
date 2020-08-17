@@ -4,7 +4,8 @@ const mysql = require('mysql');
 
 const app = express();
 
-const HOST_NAME = "172.17.0.5"
+const HOST_NAME = "0.0.0.0"
+const PORT = 6001
 
 const SELECT_ALL_PRODUCTS_QUERY = 'select * from keyword_live_male;';
 const SELECT_ALL_MAP_NODE_QUERY = 'select * from youtube_map_node';
@@ -253,6 +254,6 @@ app.get('/products/add', (req,res) => {
 });
 
 
-app.listen(6001, HOST_NAME,() => {
+app.listen(PORT, HOST_NAME,() => {
     console.log(`Products server listening on port 6001`)
 });
