@@ -4,9 +4,12 @@ const mysql = require('mysql');
 
 const app = express();
 
+const HOST_NAME = "172.17.0.5"
+
 const SELECT_ALL_PRODUCTS_QUERY = 'select * from keyword_live_male;';
 const SELECT_ALL_MAP_NODE_QUERY = 'select * from youtube_map_node';
 const SELECT_ALL_MAP_EDGE_QUERY = 'select * from youtube_map_edge';
+
 
 
 const connection = mysql.createConnection({
@@ -250,6 +253,6 @@ app.get('/products/add', (req,res) => {
 });
 
 
-app.listen(4000, () => {
-    console.log(`Products server listening on port 4000`)
+app.listen(6001, HOST_NAME,() => {
+    console.log(`Products server listening on port 6001`)
 });
