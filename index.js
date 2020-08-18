@@ -99,7 +99,7 @@ app.get('/edge',(req,res) => {
     });
 });
 
-app.get('/future',(rep, res) => {
+app.get('/future_male',(rep, res) => {
     const SELECT_ALL_KEYWORD_FUTURE = 'select * from MLpredict_male;'
     
     connection.query(SELECT_ALL_KEYWORD_FUTURE, (err, results) => {
@@ -121,6 +121,27 @@ app.get('/future',(rep, res) => {
     });
 })
 
+app.get('/future_female',(rep, res) => {
+    const SELECT_ALL_KEYWORD_FUTURE = 'select * from MLpredict_female;'
+    
+    connection.query(SELECT_ALL_KEYWORD_FUTURE, (err, results) => {
+
+        results.sort(function(a, b) { // 오름차순
+            return a.accuracy > b.accuracy ? -1 : a.accuracy < b.accuracy ? 1 : 0;
+            // 1, 2, 3, 4, 10, 11
+        });
+
+        if(err){
+            return res.send(err)
+        }
+        else {
+            return res.json({
+                data: results
+                    
+            })
+        }
+    });
+})
 
 app.get('/raw',(req,res) => {
     const {keyword} = req.query;
